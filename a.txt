@@ -1,0 +1,48 @@
+import yagmail
+
+
+class email:
+
+    # Initialize email parameters
+    def __init__(self, receiver=[], sender="", subject="", body="", attachments=[]):
+        self.receiver = receiver
+        self.sender = sender
+        self.subject = subject
+        self.body = body
+        self.attachments = attachments
+
+    # if user enter multiple inputs like sender names and attachments with ',' separator
+    @staticmethod
+    def from_string(emp_str):
+        a = emp_str.split(",")
+        return a
+
+    # set the sender email
+    @staticmethod
+    def send_email(self):
+        try:
+            yag = yagmail.SMTP(self.sender)
+            yag.send(
+                to=self.receiver,
+                subject=self.subject,
+                contents=self.body,
+                attachments=self.attachments,
+            )
+            print("email sent")
+        except:
+            print("sender email error")
+
+
+sender = input("Enter mail_sender")
+receiver = input("Enter mails of receiver")
+receiver = email.from_string(receiver)
+
+subject = input("Enter the subject of email")
+body = input("Enter the body of email")
+attach = input("Enter path of attachments")
+attach = email.from_string(attach)
+
+email1 = email(
+    sender=sender, receiver=receiver, body=body, subject=subject, attachments=attach
+)
+email.send_email(email1)
