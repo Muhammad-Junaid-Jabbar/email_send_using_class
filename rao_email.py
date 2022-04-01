@@ -6,8 +6,6 @@ from email.utils import COMMASPACE, formatdate
 EMAIL_ADDRESS = os.environ.get("EMAIL_USER")
 EMAIL_PASSWORD = os.environ.get("EMAIL_PASS")
 
-print(EMAIL_ADDRESS)
-
 
 class SMTPEmail:
     """Email Library for Sending Mulipart Email using SMTP"""
